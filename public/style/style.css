@@ -1,0 +1,499 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app--home {
+  background: url("../images/pokemon-anniversary-xv-hd-1080P-wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.navbar {
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 50px;
+  height: 100px;
+}
+.navbar__logo {
+  height: 100%;
+}
+.navbar__nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.navbar__nav-list {
+  list-style-type: none;
+}
+.navbar__nav-element a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  text-shadow: 2px 2px 5px black;
+}
+.navbar__nav-element a:hover {
+  text-decoration: underline;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  height: 50px;
+}
+.search-bar form {
+  position: relative;
+  top: 0;
+}
+.search-bar__form {
+  position: relative;
+  top: 0;
+  width: 400px;
+  height: 50px;
+  font-size: 1.2rem;
+  border: 3px solid white;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+}
+
+.search-results {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 380px;
+  list-style-type: none;
+}
+.search-results li {
+  padding: 5px;
+  text-align: center;
+}
+.search-results li:hover {
+  background-color: white;
+}
+.search-results li a {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.basic-list {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 20px 0;
+}
+.basic-list__element {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 18%;
+  aspect-ratio: 1;
+  margin: 1%;
+  border-radius: 100%;
+  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.884);
+}
+.basic-list__element:hover img {
+  animation: move 0.5s linear 0s infinite;
+}
+.basic-list__element img {
+  width: 90%;
+}
+.basic-list__button, .poke-display__button {
+  width: 200px;
+  height: 50px;
+  margin: 0 10px;
+  background-color: transparent;
+  border: 3px solid white;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.basic-list__button-pad {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+.basic-list__button:hover, .poke-display__button:hover {
+  transform: scale(1.1);
+  transition: all 0.1s;
+}
+
+.fav-modal {
+  width: 50%;
+  height: 25%;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.952);
+}
+.fav-modal--hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+.fav-modal__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.fav-modal__input {
+  width: 75%;
+  height: 50px;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+.fav-modal__button {
+  width: 200px;
+  height: 40px;
+  margin-top: 10px;
+  background-color: transparent;
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  transition: all 0.1s;
+}
+.fav-modal__button:hover {
+  transform: scale(1.1);
+  transition: all 0.1s;
+}
+
+.fav-button {
+  cursor: pointer;
+}
+
+.poke-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  color: white;
+}
+.poke-display section {
+  background-color: #1b1b1b;
+}
+.poke-display__name {
+  margin-top: 60px;
+  font-size: 2.5rem;
+  text-align: center;
+}
+.poke-display__description {
+  width: 100%;
+  padding: 0 20%;
+  text-align: center;
+}
+.poke-display__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+.poke-display__button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.presentation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  margin-top: -100px;
+  border-radius: 0px 0px 30px 30px;
+}
+.presentation__image {
+  width: 250px;
+  margin-bottom: -90px;
+  animation: move 0.5s linear 0s infinite;
+}
+.presentation__section {
+  width: 100%;
+}
+
+.types {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+.types-element {
+  font-size: 1.2rem;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: black;
+}
+
+.size-and-skills {
+  background-color: #1b1b1b;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.size, .skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  height: 200px;
+  width: 40%;
+  border: 2px solid white;
+  border-radius: 20px;
+  margin: 0px 20px;
+}
+.size p, .skills p {
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 5px;
+}
+
+.skills ul {
+  list-style-type: none;
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 5px;
+}
+
+.moves {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 30px;
+  width: 85%;
+  margin: 20px 0;
+  padding: 20px;
+}
+.moves__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.moves-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.moves-list-element {
+  margin: 5px;
+  font-size: 1.2rem;
+}
+
+.stats-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+.stats-list {
+  list-style-type: none;
+  width: 300px;
+}
+.stats-list li {
+  margin: 5px 0;
+  font-size: 1.3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+.stats-list li p {
+  flex-grow: 1;
+}
+
+.genealogy {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-items: stretch;
+}
+.genealogy section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.genealogy section h2 {
+  text-align: center;
+}
+
+.favourites-display {
+  flex-grow: 1;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.favourites-display__title {
+  color: white;
+}
+.favourites-display__element {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.favourites-display__element-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.favourites-display__element form {
+  width: 70%;
+}
+.favourites-display__element-input {
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  padding-left: 10px;
+}
+.favourites-display__element-delete {
+  width: 20px;
+  background-color: transparent;
+  border-color: transparent;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.favourites-display__element img {
+  width: 120%;
+  animation: move 0.5s linear 0s infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(0px, -5px);
+  }
+  50% {
+    transform: translate(0px, 5px);
+  }
+  99% {
+    transform: translate(0px, 0px);
+  }
+}
+@media (max-width: 1100px) {
+  .basic-list__element {
+    width: 23%;
+  }
+}
+@media (max-width: 750px) {
+  .basic-list__element {
+    width: 28%;
+  }
+}
+@media (max-width: 400px) {
+  .navbar {
+    height: 70px;
+    padding: 5px 10px;
+  }
+
+  .basic-list__element {
+    width: 45%;
+  }
+
+  .search-bar__form {
+    width: 110%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
